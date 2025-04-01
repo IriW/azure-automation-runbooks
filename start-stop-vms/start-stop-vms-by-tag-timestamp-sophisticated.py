@@ -134,12 +134,14 @@ def send_email_via_api(recipient_emails, subject, plain_body, html_body):
     else:
         print(f"Failed to send email: {response.status_code}, {response.text}")
 
-# Function to create argument parser. 
+def str2bool(value):
+    return value.lower() in ("true", "1", "yes")
+
 def createParser():
     parser = argparse.ArgumentParser(description='Azure VM start/stop actions')
     parser.add_argument('--tag_name', type=str, help='Tag name', required=True)
     parser.add_argument('--tag_value', type=str, help='Tag value', required=True)
-    parser.add_argument('--shutdown', type=str, help='Shutdown: True or False', required=True)
+    parser.add_argument('--shutdown', type=str2bool, help='Shutdown: True or False', required=True)
     parser.add_argument('--email_list', type=str, help='Recipient mailboxes separated by semicolons', required=False)
     return parser
 
@@ -172,7 +174,7 @@ network_client = NetworkManagementClient(credentials, subscription_id)
 
 # Bulk messages (VMs as strings list)
 summary_messages = []
-subject_action = "Stopped" if args.shutdown == 'True' else "Started"
+subject_action = "Stopped" if args.shutdown else "Started"
 
 for vm in vm_list:
     resource_group = vm.id.split("/")[4]
@@ -183,7 +185,7 @@ for vm in vm_list:
             tags = vm.tags
             for (tag, value) in tags.items():
                 if tag == args.tag_name and value == args.tag_value:
-                    if args.shutdown == 'True':
+                    if args.shutdown:
                         vm_stop = compute_client.virtual_machines.begin_deallocate(resource_group, vm_name)
                         vm_stop.wait()
                         message = f"VM {resource_group.lower()}/{vm_name} has been stopped"
@@ -195,7 +197,7 @@ for vm in vm_list:
                             "public_ip": get_vm_public_ip(resource_group, vm_name)
                         })
 
-                    elif args.shutdown == 'False':
+                    elif not args.shutdown:
                         vm_start = compute_client.virtual_machines.begin_start(resource_group, vm_name)
                         vm_start.wait()
                         message = f"VM {resource_group.lower()}/{vm_name} has been started"
