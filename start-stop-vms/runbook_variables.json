@@ -54,7 +54,7 @@
     "isEncrypted": false
   },
   {
-    "name": "default_email_list",
+    "name": "email_list",
     "type": "String",
     "value": "email1@example.com;email2@example.com",
     "isEncrypted": false
