@@ -30,7 +30,7 @@ def send_email_via_api():
         "personalizations": [
             {
                 "to": to_emails,
-                "subject": "Test Email from Azure Automation Account (eProc DEV)"
+                "subject": "Test Email from Azure Automation Account"
             }
         ],
         "from": {"email": sender_email},
