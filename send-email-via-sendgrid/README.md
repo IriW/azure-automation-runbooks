@@ -1,6 +1,7 @@
 # Send Email via SendGrid
 
 This repository contains Python scripts to send emails using the SendGrid API from an Azure Automation environment.
+To make any of those production-ready, make sure to replace hardcoded values such as Subscription ID, key etc. by variables.
 
 ## Files
 
