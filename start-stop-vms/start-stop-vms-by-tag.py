@@ -150,12 +150,15 @@ def get_vm_public_ip(resource_group, vm_name):
         nic_list = compute_client.virtual_machines.get(resource_group, vm_name).network_profile.network_interfaces
         for nic_ref in nic_list:
             nic_name = nic_ref.id.split('/')[-1]
-            nic = network_client.network_interfaces.get(resource_group, nic_name)
+            nic_rg = nic_ref.id.split('/')[4]
+            nic = network_client.network_interfaces.get(nic_rg, nic_name)
             for ip_config in nic.ip_configurations:
                 if ip_config.public_ip_address:
                     public_ip_id = ip_config.public_ip_address.id
+                    ip_rg = public_ip_id.split('/')[4]
                     public_ip_name = public_ip_id.split('/')[-1]
-                    public_ip = network_client.public_ip_addresses.get(resource_group, public_ip_name)
+                    print(f"Looking for public IP: {public_ip_name} in RG: {ip_rg}")
+                    public_ip = network_client.public_ip_addresses.get(ip_rg, public_ip_name)
                     return public_ip.ip_address
         return "No Public IP"
     except Exception as e:
