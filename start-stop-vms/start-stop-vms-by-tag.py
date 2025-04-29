@@ -19,7 +19,7 @@ import sys
 import requests
 import json
 import argparse
-import smtplib, ssl
+# import smtplib, ssl
 import automationassets
 from automationassets import AutomationAssetNotFound
 from datetime import datetime
