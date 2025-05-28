@@ -8,7 +8,7 @@ environment = automationassets.get_automation_variable("environment")
 
 # REMEMBER to define parameters in schedule LIKE 
 # --tag_name=availability
-# --tag_value=mytesttag
+# --tag_value=bizhours
 # --shutdown=False
 # --email_list=emai2@addres.com;email1@addres.com
 
