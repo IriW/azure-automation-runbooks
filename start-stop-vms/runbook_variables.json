@@ -1,0 +1,62 @@
+[
+  {
+    "name": "owner_name",
+    "type": "String",
+    "value": "Iri D.",
+    "isEncrypted": false
+  },
+  {
+    "name": "owner_email",
+    "type": "String",
+    "value": "email1@example.com",
+    "isEncrypted": false
+  },
+  {
+    "name": "runbook_name",
+    "type": "String",
+    "value": "start-stop-vms-by-tag",
+    "isEncrypted": false
+  },
+  {
+    "name": "subscription_name",
+    "type": "String",
+    "value": "ABC_Subscription",
+    "isEncrypted": false
+  },
+  {
+    "name": "subscription_id",
+    "type": "String",
+    "value": "12345678-abcd-1234-efgh-9876543210ab",
+    "isEncrypted": false
+  },
+  {
+    "name": "sender_email",
+    "type": "String",
+    "value": "email@example.com",
+    "isEncrypted": false
+  },
+  {
+    "name": "tag_name",
+    "type": "String",
+    "value": "availability",
+    "isEncrypted": false
+  },
+  {
+    "name": "tag_value",
+    "type": "String",
+    "value": "auto-managed",
+    "isEncrypted": false
+  },
+  {
+    "name": "shutdown",
+    "type": "Boolean",
+    "value": false,
+    "isEncrypted": false
+  },
+  {
+    "name": "email_list",
+    "type": "String",
+    "value": "email1@example.com;email2@example.com",
+    "isEncrypted": false
+  }
+]
